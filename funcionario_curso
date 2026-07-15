@@ -1,0 +1,40 @@
+from rich.panel import Panel
+class Funcionario (ABC):
+  salario_min= 1612
+  nss = 7.5
+
+  def __init__(self, nome):
+    self.nome = nome
+
+
+  @abstractmethod
+  def calcular_salario(self):
+    pass
+
+  def analisar():
+    pass
+
+class Horista(Funcionario):
+
+  def calcular_salario(self,horas_trabalhadas,valor_hora):
+
+    self.horas_trabalhadas = horas_trabalhadas
+    self.valor_hora= valor_hora
+    self.salario = self.horas_trabalhadas * self.valor_hora
+    self.salario = self.salario - (self.salario * (self.nss/100))
+    return f'O salario do funcioanaio {self.nome} e {self.salario}'
+
+  def analisar(self):
+    self.informacao = Panel(f'O funcionario {self.nome} tem o salario de {self.salario} e correspone a {self.salario/self.salario_min:.1f} salarios minimo', title='Analise de salario')
+    return self.informacao
+
+class Mensalista(Funcionario):
+
+  def calcular_salario(self,salario):
+    self.salario = salario
+    self.salario = self.salario - (self.salario * (self.nss/100))
+    return f'O salario do funcioanaio {self.nome} e {self.salario}'
+
+  def analisar(self):
+    self.informacao = Panel(f'O funcionario {self.nome} tem o salario de {self.salario} e correspone a {self.salario/self.salario_min:.1f} salarios minimo', title='Analise de salario')
+    return self.informacao
