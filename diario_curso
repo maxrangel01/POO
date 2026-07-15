@@ -1,0 +1,30 @@
+class Diario:
+
+  def __init__(self,senha='123'):
+    self.__msg=[]
+    self.__senha = senha
+    return print(f'A senha e criada com sucesso...')
+
+  @property
+  def senha(self):
+    return self.__senha
+
+  @senha.setter
+  def senha(self,senha):
+    if senha == self.__senha:
+      return print('Senha valida...')
+    else:
+      print('Senha invalida...')
+
+  def escrever(self,msg):
+    self.__msg.append(msg)
+
+
+  def ler (self,senha):
+    c = 0
+    if senha == self.__senha:
+      for i in self.__msg:
+        c+=1
+        print(f'{c}- {i}')
+    else:
+      print('Senha invalida...')
