@@ -1,0 +1,18 @@
+class Senha_crip:
+  def __init__(self,senha=''):
+    senha = getpass.getpass("Digite sua senha: ")
+    self.__senha = senha
+
+
+  def get_senha(self):
+    return self.__senha
+
+  def set_senha(self):
+    senha_usuario = senha
+    senha_bytes = senha_usuario.encode('utf-8')
+    salt = bcrypt.gensalt()
+    self.senha_hash = bcrypt.hashpw(senha_bytes, salt)
+    return print(self.senha_hash)
+
+  def validar_senha(self,senha):
+    pass
