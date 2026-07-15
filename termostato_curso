@@ -1,0 +1,52 @@
+class Termostato:
+  def __init__(self):
+    self.__temperatura = 24
+    return print(f'A temperatura e {self.__temperatura} C°')
+
+  def get_temperatura(self):
+    return self.__temperatura
+
+  def set_temperatura(self,valor):
+    valor1 = valor % .5
+    if valor1 % 0.5 == 0 or valor1 % 0.5 == .5:
+
+      if valor >= 16 and valor <=30:
+        self.__temperatura = valor
+      else:
+        print('A temperatura e invalida...')
+
+  def set_temperatura_formatada(self,valor):
+    valor1 = valor % .5
+    if valor1 % 0.5 == 0 or valor1 % 0.5 == .5:
+      if self.__temperatura > 16 and self.__temperatura <30:
+        self.__temperatura = valor
+      elif self.__temperatura < 16:
+        self.__temperatura =16
+      elif self.__temperatura > 30:
+        self.__temperatura =30
+    else:
+      print('A temperatura e invalida...')
+
+  def aumentar_temperatura(self,valor=0.5):
+    self.__temperatura+=valor
+    if self.__temperatura >= 16 and self.__temperatura <=30:
+      self.__temperatura = self.__temperatura
+    elif self.__temperatura < 16:
+      self.__temperatura =16
+    elif self.__temperatura > 30:
+      self.__temperatura =30
+    return print(f'A temperatura e {self.__temperatura} C°')
+
+
+  def diminuir_temperatura(self,valor=0.5):
+    self.__temperatura-=valor
+    if self.__temperatura >= 16 and self.__temperatura <= 30:
+      self.__temperatura = self.__temperatura
+    elif self.__temperatura < 16:
+      self.__temperatura =16
+    elif self.__temperatura > 30:
+      self.__temperatura =30
+    return print(f'A temperatura e {self.__temperatura} C°')
+
+  def temperatura_formatada(self):
+    return print(f'a temperatura é de : {self.__temperatura} C°')
