@@ -1,0 +1,43 @@
+from rich.table import Table
+from rich import print
+class Transporte(ABC):
+
+  def __init__(self, distancia):
+    self.distancia = distancia
+
+  def frete (self):
+    pass
+
+  @abstractmethod
+  def cal_frete(self):
+    pass
+
+class Moto (Transporte):
+
+  def cal_frete(self):
+    self.fator = 0.5
+
+    self.frete = self.fator * self.distancia
+    return f'O valor do frete com Moto e : {self.frete}'
+
+class Caminhao (Transporte):
+
+  def cal_frete(self):
+    self.fator = 1.2
+
+    if self.distancia < 50:
+      return f'O frete não podera ser realizado com Caminhao, Km abaixo do minimo'
+    else:
+      self.frete = self.fator * self.distancia
+      return f'O valor do frete com Caminha e : {self.frete}'
+
+
+class Drone(Transporte):
+
+   def cal_frete(self):
+     self.fator = 9.5
+     if self.distancia > 10:
+       return f'O frete não podera ser realizado com Drone, Km muito alto bateria vai descarregar'
+     else:
+      self.frete = self.fator * self.distancia
+      return f'O valor do frete com Drone e : {self.frete}'
