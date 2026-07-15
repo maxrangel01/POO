@@ -1,0 +1,51 @@
+import getpass
+import random
+
+class Jogo:
+  
+  def __init__(self):
+    self.contador = 0
+    #self.add_jogadores()
+    #self.sortear_jogador()
+    self.jogar()
+
+
+
+  def jogar(self,palavra_secreta='',palavra=[]):
+    print('*********************************')
+    print('***Bem vindo ao jogo da forca!***')
+    print('*********************************')
+    self.palavra_secreta = getpass.getpass("Digite a palavra secreta: ").upper()
+    self.palavra=palavra
+
+    for letra in self.palavra_secreta:
+      self.palavra.append('_')
+    print(self.palavra)
+    while '_' in self.palavra:
+      chute = str(input('Qual letra?').upper())
+      for index, letra in enumerate(self.palavra_secreta):
+        if (chute == letra):
+          self.palavra[index] = letra
+      print(self.palavra)
+      self.contador += 1
+    print("vc acertou a palavra secreta")
+    print(f"Numero de tentativas: {self.contador}")
+
+  '''def add_jogadores(self,jogadores=[]):
+    self.jogadores=jogadores
+    while True:
+      jogador = input('Digite o nome do jogador')
+      if jogador == "":
+        print(self.jogadores)
+        break
+      else:
+        self.jogadores.append(jogador)
+        print(self.jogadores)
+    return print(self.jogadores)
+
+  def sortear_jogador(self):
+    self.jogador_sorteado = random.choice(self.jogadores)
+    return f'O jogador escolhido para a adinhar e: {self.jogador_sorteado}' '''
+
+
+jogar=Jogo()
